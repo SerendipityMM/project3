@@ -10,6 +10,6 @@ router.get("/secret/:userId", requireSignin, isAuth, isAdmin, (req, res) => {
     });
 });
 
-const newLocal = router.param('userId', userById);
+router.param('userId', userById);
 
 module.exports = router;
