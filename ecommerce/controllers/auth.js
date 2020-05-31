@@ -7,16 +7,17 @@ const {errorHandler} = require('../helpers/dbErrorHandler');
 
 exports.signup = (req,res) => {
 
-    console.log('req.body', req.body);
+   // console.log('req.body', req.body);
     const user = new User(req.body);
     user.save((err, user) => {
         if(err) {
             return res.status(400).json({
-                err: errorHandler(err)
+                //err: errorHandler(err)
+                error: 'Email is taken'
             });
         }
-        user.salt = undefined
-        user.hashed_password = undefined
+        user.salt = undefined;
+        user.hashed_password = undefined;
         res.json({
             user
         });
@@ -25,7 +26,7 @@ exports.signup = (req,res) => {
 
 exports.signin = (req,res) => {
     //find user based on email
-    const {email, password} = req.body
+    const {email, password} = req.body;
     User.findOne({email}, (err, user) => {
         if (err || !user) {
             return res.status(400).json({
@@ -48,7 +49,7 @@ exports.signin = (req,res) => {
 
 
 exports.signout = (_req, res) => {
-      res.clearCookie('t')
+      res.clearCookie('t');
       res.json({ message: 'Signed out' });
 };
 
