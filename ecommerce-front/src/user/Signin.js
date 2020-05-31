@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import {Redirect} from 'react-router-dom';
 import Layout from '../core/Layout';
-import {signin} from '../auth';
+import {signin, authenticate} from '../auth';
 
  
 const Signin = () => {
    const [values, setValues] = useState({
-       email:'',
-       password:'',
+       email:'mims@abv.bg',
+       password:'aaaaa1',
        error:'',
        loading: false,
        redirectToReferrer: false
@@ -27,13 +27,15 @@ const Signin = () => {
          if(data.error) {
             setValues({...values, error: data.error, loading: false});  
          } else {
+           authenticate(data, () => {
             setValues({
                ...values,
                redirectToReferrer: true
             });
-          }
+          });
+         }
       });  
-  };
+    };
 
   // SignUp form Functionality
    const signupForm = () => (
