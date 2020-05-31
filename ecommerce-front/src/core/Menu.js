@@ -16,21 +16,42 @@ const isActive = (history, path)  => {
     const Menu = ({history}) => (
 
       <div>
-        <ul className="nav nav-tabs bg-dark">
-
+       <ul className="nav nav-tabs bg-dark">
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/")}
+                    to="/"
+                >
+                    Home
+                </Link>
+            </li>
           
-          <li className="nav-item">
-            <Link className="nav-link" style={isActive(history, '/')} to="/">Home</Link>
-          </li>
-          
+            {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                <li className="nav-item">
+                    <Link
+                        className="nav-link"
+                        style={isActive(history, "/user/dashboard")}
+                        to="/user/dashboard"
+                    >
+                        Dashboard
+                    </Link>
+                </li>
+            )}
 
+            {isAuthenticated() && isAuthenticated().user.role === 1 && (
+                <li className="nav-item">
+                    <Link
+                        className="nav-link"
+                        style={isActive(history, "/admin/dashboard")}
+                        to="/admin/dashboard"
+                    >
+                        Dashboard
+                    </Link>
+                </li>
+            )}
 
-          <li className="nav-item">
-            <Link className="nav-link" style={isActive(history, '/user/dashboard')} to="/user/dashboard" >Dashboard </Link>
-          </li>
-
-
-          {!isAuthenticated() && (
+            {!isAuthenticated() && (
                 <Fragment>
                     <li className="nav-item">
                         <Link
@@ -71,6 +92,6 @@ const isActive = (history, path)  => {
             )}
         </ul>
     </div>
-    );
+);
 
 export default withRouter(Menu);
