@@ -1,8 +1,6 @@
-import React, {Fragment} from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import {signout, isAuthenticated} from '../auth';
-
-
+import React, { Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
+import { signout, isAuthenticated } from "../auth";
 
 
 const isActive = (history, path)  => {
@@ -20,8 +18,15 @@ const isActive = (history, path)  => {
       <div>
         <ul className="nav nav-tabs bg-dark">
 
+          
           <li className="nav-item">
-            <Link className="nav-link" style={isActive(history, '/')} to="/">Home </Link>
+            <Link className="nav-link" style={isActive(history, '/')} to="/">Home</Link>
+          </li>
+          
+
+
+          <li className="nav-item">
+            <Link className="nav-link" style={isActive(history, '/dashboard')} to="/dashboard" >Dashboard </Link>
           </li>
 
 
