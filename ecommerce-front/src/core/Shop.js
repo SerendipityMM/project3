@@ -3,6 +3,8 @@ import Layout from './Layout';
 import Card from './Card';
 import {getCategories} from './apiCore';
 
+
+
 const Shop = () => {
 
     const [categories, setCategories] = useState();
@@ -19,8 +21,7 @@ const Shop = () => {
             });
         };
 
-
-        useEffect(() =>{
+        useEffect(() => {
             init();
         }, []);
 
@@ -31,12 +32,19 @@ const Shop = () => {
             className="container-fluid" >
   
          <div className='row'>
-    <div className='col-4'>{JSON.stringify(categories)}</div>
-             <div className='col-8'>Right side bar</div>
-         </div>
+    <div className='col-4'>
+     <h4>Coming soon..</h4>
+    </div>
+             
+        
+         
+</div>
+
         </Layout>
     );
 
 };
+
+
 
 export default Shop;

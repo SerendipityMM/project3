@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Layout from './Layout';
 import {getProducts} from './apiCore';
 import Card from './Card';
+import Search from './Search';
 
 const Home = () => {
    const [productsBySell, setProductsBySell] = useState([]);
@@ -39,7 +40,10 @@ const Home = () => {
           title="Sarikoff Art & Design"
           description="Modern and Contemporary Art Studio"
           className="container-fluid" >
+          
+          <Search />
 
+        
 
           <h3 className="mb-4 ">Shop for art you'll love</h3>
           <div className="row mb-5  ">
