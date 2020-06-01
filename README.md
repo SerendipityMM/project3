@@ -17,4 +17,4 @@ Database: MongoDB
 - [ ] Search the product by text
 - [ ] Add to cart
 - [ ] Payment method
-- [ ] Update Shipping Details
+- [ ] Shipping Details
