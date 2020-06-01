@@ -3,30 +3,50 @@ import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
 
 
-const isActive = (history, path)  => {
-  if(history.location.pathname === path) {
-      return {color: '#d81b60 '}
-  
-     } else {}
-     
-        return {color:'#ffffff'};
-  
-  };
-  
-    const Menu = ({history}) => (
+const isActive = (history, path) => {
+    if (history.location.pathname === path) {
+        return { color: '#BA262B' };
+    } else {
+        return { color: "#ffffff" };
+    }
+};
 
-      <div>
-       <ul className="nav nav-tabs bg-dark">
+const Menu = ({ history }) => (
+    <div>
+        <ul className="nav nav-tabs bg-dark pt-2 pb-2 ">
             <li className="nav-item">
                 <Link
-                    className="nav-link"
+                    className="nav-link ml-3 "
                     style={isActive(history, "/")}
                     to="/"
                 >
                     Home
                 </Link>
             </li>
-          
+
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/shop")}
+                    to="/shop"
+                >
+                    Shop
+                </Link>
+            </li>
+
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/cart")}
+                    to="/cart"
+                >
+                    Cart{" "}
+                    <sup>
+                        <small className="cart-badge"></small>
+                    </sup>
+                </Link>
+            </li>
+
             {isAuthenticated() && isAuthenticated().user.role === 0 && (
                 <li className="nav-item">
                     <Link
@@ -88,9 +108,11 @@ const isActive = (history, path)  => {
                     >
                         Signout
                     </span>
+           
                 </li>
             )}
         </ul>
+        
     </div>
 );
 
